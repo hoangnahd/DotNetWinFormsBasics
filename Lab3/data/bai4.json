@@ -1,0 +1,158 @@
+[
+  {
+    "Phong": "1",
+    "Phim": "Lật Mặt 7",
+    "GiaVeChuan": "45000",
+    "Ghe": [
+      {
+        "soGhe": "A-1",
+        "dat": false,
+        "heSo": "1"
+      },
+      {
+        "soGhe": "A-2",
+        "dat": false,
+        "heSo": "1"
+      },
+      {
+        "soGhe": "A-3",
+        "dat": false,
+        "heSo": "1"
+      },
+      {
+        "soGhe": "B-1",
+        "dat": false,
+        "heSo": "1.5"
+      },
+      {
+        "soGhe": "B-2",
+        "dat": false,
+        "heSo": "1.5"
+      },
+      {
+        "soGhe": "B-3",
+        "dat": false,
+        "heSo": "1.5"
+      },
+      {
+        "soGhe": "C-1",
+        "dat": false,
+        "heSo": "2"
+      },
+      {
+        "soGhe": "C-2",
+        "dat": false,
+        "heSo": "2"
+      },
+      {
+        "soGhe": "C-3",
+        "dat": false,
+        "heSo": "2"
+      }
+    ]
+  },
+  {
+    "Phong": "2",
+    "Phim":"Vây Hãm",
+    "GiaVeChuan": "50000",
+    "Ghe": [
+      {
+        "soGhe": "A-1",
+        "dat": false,
+        "heSo": "1"
+      },
+      {
+        "soGhe": "A-2",
+        "dat": false,
+        "heSo": "1"
+      },
+      {
+        "soGhe": "A-3",
+        "dat": false,
+        "heSo": "1"
+      },
+      {
+        "soGhe": "B-1",
+        "dat": false,
+        "heSo": "1.5"
+      },
+      {
+        "soGhe": "B-2",
+        "dat": false,
+        "heSo": "1.5"
+      },
+      {
+        "soGhe": "B-3",
+        "dat": false,
+        "heSo": "1.5"
+      },
+      {
+        "soGhe": "C-1",
+        "dat": false,
+        "heSo": "2"
+      },
+      {
+        "soGhe": "C-2",
+        "dat": false,
+        "heSo": "2"
+      },
+      {
+        "soGhe": "C-3",
+        "dat": false,
+        "heSo": "2"
+      }
+    ]
+  },
+  {
+    "Phong": "3",
+    "Phim":"Cái giá của hạnh phúc",
+    "GiaVeChuan": "60000",
+    "Ghe": [
+      {
+        "soGhe": "A-1",
+        "dat": false,
+        "heSo": "1"
+      },
+      {
+        "soGhe": "A-2",
+        "dat": false,
+        "heSo": "1"
+      },
+      {
+        "soGhe": "A-3",
+        "dat": false,
+        "heSo": "1"
+      },
+      {
+        "soGhe": "B-1",
+        "dat": false,
+        "heSo": "1.5"
+      },
+      {
+        "soGhe": "B-2",
+        "dat": false,
+        "heSo": "1.5"
+      },
+      {
+        "soGhe": "B-3",
+        "dat": false,
+        "heSo": "1.5"
+      },
+      {
+        "soGhe": "C-1",
+        "dat": false,
+        "heSo": "2"
+      },
+      {
+        "soGhe": "C-2",
+        "dat": false,
+        "heSo": "2"
+      },
+      {
+        "soGhe": "C-3",
+        "dat": false,
+        "heSo": "2"
+      }
+    ]
+  }
+]
