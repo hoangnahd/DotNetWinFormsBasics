@@ -445,5 +445,10 @@ namespace Lab3
                 form.Close();
             }
         }
+
+        private void Bai05_Server_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
