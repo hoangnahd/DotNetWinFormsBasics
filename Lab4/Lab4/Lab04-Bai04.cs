@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HtmlAgilityPack;
+using Newtonsoft.Json;
 using static Lab4.Lab04_Bai07;
 
 
@@ -32,6 +33,33 @@ namespace Lab4
         }
         private List<FilmInfo> filmInfos = new List<FilmInfo>();
         static public FilmInfo film = new FilmInfo();
+        private void SaveFilmInfosToJson()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                FileName = "films.json",
+                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+                Title = "Save JSON File",
+                InitialDirectory = Path.GetFullPath("../../../data/")
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Serialize the list of FilmInfo objects to JSON
+                    string jsonString = JsonConvert.SerializeObject(filmInfos, Formatting.Indented);
+
+                    // Save the JSON string to the selected file
+                    File.WriteAllText(saveFileDialog.FileName, jsonString);
+                    MessageBox.Show("Film information saved successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
         private async void FetchFilmInfo(string url)
         {
             var httpClient = new HttpClient();
@@ -80,6 +108,7 @@ namespace Lab4
             listBox1.DrawMode = DrawMode.OwnerDrawFixed;
             listBox1.ItemHeight = 150;
             FetchFilmInfo("https://betacinemas.vn/phim.htm");
+            SaveFilmInfosToJson();
         }
 
         private void listBox1_DrawItem(object sender, DrawItemEventArgs e)

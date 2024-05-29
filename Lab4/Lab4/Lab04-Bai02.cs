@@ -42,7 +42,7 @@ namespace Lab4
                     saveFileDialog.FileName = "website.html"; // Default filename
                     saveFileDialog.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
                     saveFileDialog.Title = "Save HTML File";
-
+                    saveFileDialog.InitialDirectory = Path.GetFullPath("../../../data/");
                     // Show the SaveFileDialog and check if the user clicked "Save"
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
