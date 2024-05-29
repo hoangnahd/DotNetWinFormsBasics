@@ -93,6 +93,12 @@
     <Compile Include="Bai07-themMonAn.Designer.cs">
       <DependentUpon>Bai07-themMonAn.cs</DependentUpon>
     </Compile>
+    <Compile Include="detailFilm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="detailFilm.Designer.cs">
+      <DependentUpon>detailFilm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     <EmbeddedResource Include="Bai07-themMonAn.resx">
       <DependentUpon>Bai07-themMonAn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="detailFilm.resx">
+      <DependentUpon>detailFilm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab04-Bai03.resx">
       <DependentUpon>Lab04-Bai03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab04-Bai04.resx">
+      <DependentUpon>Lab04-Bai04.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab04-Bai05.resx">
       <DependentUpon>Lab04-Bai05.cs</DependentUpon>
