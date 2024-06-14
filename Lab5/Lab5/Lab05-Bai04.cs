@@ -5,21 +5,19 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
+using System.Net;
 using System.Text;
+using HtmlAgilityPack;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HtmlAgilityPack;
 using Newtonsoft.Json;
-using static Lab4.Lab04_Bai07;
 
-
-namespace Lab4
+namespace Lab5
 {
-    public partial class Lab04_Bai04 : Form
+    public partial class Lab05_Bai04 : Form
     {
-        public Lab04_Bai04()
+        public Lab05_Bai04()
         {
             InitializeComponent();
         }
@@ -101,10 +99,12 @@ namespace Lab4
                 }
             }
         }
-        private void Lab04_Bai04_Load(object sender, EventArgs e)
+       
+        private void Lab05_Bai04_Load(object sender, EventArgs e)
         {
             listBox1.DrawMode = DrawMode.OwnerDrawFixed;
             listBox1.ItemHeight = 150;
+
             FetchFilmInfo("https://betacinemas.vn/phim.htm");
             SaveFilmInfosToJson();
         }
@@ -113,17 +113,18 @@ namespace Lab4
             // Check if the index is valid
             if (e.Index < 0 || e.Index >= filmInfos.Count) return;
 
-            // Get the food_info item to be drawn
+            // Get the filmInfo item to be drawn
             FilmInfo item = filmInfos[e.Index];
 
             // Define padding and image size
             int imageSize = 145; // Adjust based on your image size
 
             // Draw the background of the item
-            e.DrawBackground();
+            e.Graphics.FillRectangle(Brushes.White, e.Bounds);
 
             // Calculate the bounds for the image
             Rectangle imageRect = new Rectangle(e.Bounds.X + 6, e.Bounds.Y + 5, imageSize, imageSize);
+
             // Draw the image
             Image image = null;
             using (var webClient = new WebClient())
@@ -137,21 +138,30 @@ namespace Lab4
 
             // Calculate the bounds for the text
             Rectangle textRect = new Rectangle(e.Bounds.X + 4 + imageSize + 4, e.Bounds.Y + 4, e.Bounds.Width - imageSize - 3 * 4, e.Bounds.Height - 2 * 4);
+
+            // Draw the title text
             using (SolidBrush textBrush = new SolidBrush(Color.IndianRed))
             {
-                Label tenMonAn = new Label
-                {
-                    Text = item.Title,
-                    Font = new Font(e.Font.FontFamily, 14) // Set the font size to 14
-                };
+                e.Graphics.DrawString(item.Title, new Font(e.Font.FontFamily, 14), textBrush, textRect.X, textRect.Y);
+            }
 
-                e.Graphics.DrawString(tenMonAn.Text, tenMonAn.Font, textBrush, textRect.X, textRect.Y);
-            }
-            // Draw the text
-            using (Brush textBrush = new SolidBrush(e.ForeColor))
+            // Draw the URL text
+            using (Brush textBrush = new SolidBrush(Color.Black))
             {
-                e.Graphics.DrawString("https://betacinemas.vn"+item.Href, e.Font, textBrush, textRect.X, textRect.Y + 25);
+                e.Graphics.DrawString("https://betacinemas.vn" + item.Href, e.Font, textBrush, textRect.X, textRect.Y + 25);
             }
+
+            // Draw "Book Ticket" button
+            Rectangle bookButtonRect = new Rectangle(textRect.X + 5, textRect.Y + 70, 100, 30);
+            e.Graphics.FillRectangle(Brushes.White, bookButtonRect);
+            e.Graphics.DrawRectangle(Pens.Black, bookButtonRect);
+            e.Graphics.DrawString("Đặt vé", new Font(e.Font, FontStyle.Bold), Brushes.Black, bookButtonRect.X + 20, bookButtonRect.Y + 8);
+
+            // Draw "View Detail" button
+            Rectangle detailButtonRect = new Rectangle(textRect.X + 115, textRect.Y + 70, 100, 30);
+            e.Graphics.FillRectangle(Brushes.White, detailButtonRect);
+            e.Graphics.DrawRectangle(Pens.Black, detailButtonRect);
+            e.Graphics.DrawString("Chi tiết", new Font(e.Font, FontStyle.Bold), Brushes.Black, detailButtonRect.X + 20, detailButtonRect.Y + 8);
 
             // Calculate the bounds for the border with padding
             Rectangle borderRect = new Rectangle(e.Bounds.X + 3, e.Bounds.Y + 2, e.Bounds.Width - 5, e.Bounds.Height - 4);
@@ -162,25 +172,43 @@ namespace Lab4
                 e.Graphics.DrawRectangle(borderPen, borderRect);
             }
 
-            // Draw the focus rectangle if the item has focus
+            // Prevent default focus rectangle
             e.DrawFocusRectangle();
         }
+
+
         private void listBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left) // Check if left mouse button is clicked
+            // Get the index of the clicked item
+            int index = (sender as ListBox).IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches)
             {
-                // Get the index of the clicked item
-                int index = listBox1.IndexFromPoint(e.Location);
+                // Calculate the bounds for the buttons
+                Rectangle itemBounds = (sender as ListBox).GetItemRectangle(index);
+                Rectangle imageRect = new Rectangle(itemBounds.X + 6, itemBounds.Y + 5, 145, 145);
+                Rectangle textRect = new Rectangle(itemBounds.X + 4 + 145 + 4, itemBounds.Y + 4, itemBounds.Width - 145 - 3 * 4, itemBounds.Height - 2 * 4);
+                Rectangle bookButtonRect = new Rectangle(textRect.X + 5, textRect.Y + 70, 100, 30);
+                Rectangle detailButtonRect = new Rectangle(textRect.X + 115, textRect.Y + 70, 100, 30);
 
-                // Check if the index is valid and if the click was on an item
-                if (index != ListBox.NoMatches)
+                // Check if the click was on the "Book Ticket" button
+                if (bookButtonRect.Contains(e.Location))
                 {
-                    // Get the food_info object associated with the clicked item
                     film = listBox1.Items[index] as FilmInfo;
-                    detailFilm detailFilm = new detailFilm();
+                    Bai04_BuyTicket bai04_BuyTicket = new Bai04_BuyTicket();
+                    bai04_BuyTicket.ShowDialog();
+                }
+
+                // Check if the click was on the "View Detail" button
+                if (detailButtonRect.Contains(e.Location))
+                {
+                    film = listBox1.Items[index] as FilmInfo;
+                    Bai04_DetailFilm detailFilm = new Bai04_DetailFilm();
                     detailFilm.ShowDialog();
                 }
+
             }
         }
+        // Custom ListBox class to prevent selection fill
+
     }
 }
