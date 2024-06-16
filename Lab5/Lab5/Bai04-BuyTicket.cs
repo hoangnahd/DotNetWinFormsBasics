@@ -88,12 +88,10 @@ namespace Lab5
                 if(ghe.Value)
                     soGhe += ghe.Key+", ";
             }
-            MessageBox.Show(soGhe);
             if (soGhe.Length > 0)
             {
                 soGhe = soGhe.TrimEnd(',', ' ');
             }
-            MessageBox.Show(soGhe);
             var client = new SmtpClient();
             client.Connect("smtp.gmail.com", 465, true); // smtp host, port, use ssl.
             client.Authenticate("shopeebot0001@gmail.com", "bclh jrgg tmkp jjyq"); // gmail account, app password
@@ -121,10 +119,7 @@ namespace Lab5
                 </div>
             </body>
             </html>";
-
-
             message.Body = bodyBuilder.ToMessageBody();
-
             client.Send(message);
             MessageBox.Show("Đã đặt vé thành công!");
             client.Disconnect(true);

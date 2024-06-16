@@ -52,6 +52,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(437, 22);
             this.textBox2.TabIndex = 16;
+            this.textBox2.Text = "shopeebot0001@gmail.com";
             // 
             // richTextBox1
             // 

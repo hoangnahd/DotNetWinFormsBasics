@@ -14,6 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using MailKit.Net.Imap;
 using static Lab5.Lab05_Bai04;
+using System.Net.Mail;
 
 namespace Lab5
 {
@@ -23,7 +24,7 @@ namespace Lab5
         {
             InitializeComponent();
         }
-        static public SmtpClient client = new SmtpClient();
+        static public MailKit.Net.Smtp.SmtpClient client = new MailKit.Net.Smtp.SmtpClient();
         ImapClient imapClient = new ImapClient();
         static public MimeMessage selectedInbox;
         static public string email;
@@ -35,8 +36,7 @@ namespace Lab5
             listView1.Columns.Add("Subject", 200);
             listView1.Columns.Add("Datetime", 170);
             
-            imapClient.Connect("imap.gmail.com", 993, true);
-            imapClient.Authenticate(textBox1.Text, textBox2.Text);
+            
             var inbox = imapClient.Inbox;
             inbox.Open(FolderAccess.ReadOnly);
             int maxLength = inbox.Count > 70 ? 70 : inbox.Count;
@@ -54,12 +54,15 @@ namespace Lab5
         }
         private void button1_Click(object sender, EventArgs e)
         {
+
             listView1.Clear();
             
             if(button1.Text == "Đăng nhập")
             {
                 client.Connect("smtp.gmail.com", 465, true); // imap host, port, use ssl.
                 client.Authenticate(textBox1.Text, textBox2.Text); // gmail accout, app password.
+                imapClient.Connect("imap.gmail.com", 993, true);
+                imapClient.Authenticate(textBox1.Text, textBox2.Text);
                 DisplayMailBox();
                 textBox1.Enabled = false;
                 textBox2.Enabled = false;
@@ -71,6 +74,7 @@ namespace Lab5
             else
             {
                 client.Disconnect(true);
+                imapClient.Disconnect(true);
                 textBox1.Enabled = true;
                 textBox2.Enabled = true;
                 button2.Visible = false;
@@ -81,6 +85,12 @@ namespace Lab5
 
         private void button3_Click(object sender, EventArgs e)
         {
+            client.Disconnect(true);
+            imapClient.Disconnect(true);
+            client.Connect("smtp.gmail.com", 465, true); // imap host, port, use ssl.
+            client.Authenticate(textBox1.Text, textBox2.Text); // gmail accout, app password.
+            imapClient.Connect("imap.gmail.com", 993, true);
+            imapClient.Authenticate(textBox1.Text, textBox2.Text);
             listView1.Clear();
             DisplayMailBox();
         }

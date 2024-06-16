@@ -47,7 +47,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(437, 22);
             this.textBox3.TabIndex = 21;
-
+            this.textBox3.Text = "bclh jrgg tmkp jjyq";
             // 
             // textBox2
             // 
@@ -55,7 +55,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(437, 22);
             this.textBox2.TabIndex = 20;
-            this.textBox2.Text = "hoanganhd169@gmail.com";
+            this.textBox2.Text = "shopeebot0001@gmail.com";
             // 
             // label2
             // 
@@ -65,7 +65,6 @@
             this.label2.Size = new System.Drawing.Size(70, 16);
             this.label2.TabIndex = 19;
             this.label2.Text = "Password:";
-
             // 
             // label1
             // 
@@ -103,7 +102,6 @@
             this.label5.Size = new System.Drawing.Size(50, 16);
             this.label5.TabIndex = 25;
             this.label5.Text = "Recent";
-
             // 
             // label6
             // 
@@ -112,7 +110,6 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 16);
             this.label6.TabIndex = 26;
-
             // 
             // label4
             // 
@@ -121,7 +118,6 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 16);
             this.label4.TabIndex = 24;
-
             // 
             // listView1
             // 
@@ -131,7 +127,6 @@
             this.listView1.Size = new System.Drawing.Size(757, 268);
             this.listView1.TabIndex = 27;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            
             // 
             // comboBox1
             // 
@@ -143,7 +138,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 28;
-         
             // 
             // Lab05_Bai02
             // 

@@ -20,19 +20,27 @@ namespace Lab5
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var client = new MailKit.Net.Smtp.SmtpClient();
-            client.Connect("smtp.gmail.com", 465, true); // smtp host, port, use ssl.
-            client.Authenticate(textBox2.Text, "kdrp bowa uagh qklg"); // gmail account, app password
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("anhanh", textBox2.Text));
-            message.To.Add(new MailboxAddress("", textBox3.Text));
-            message.Subject = textBox1.Text;
-            message.Body = new TextPart("plain") // gửi ở dạng plain text, hoặc có thể thay
+            try
             {
-                Text = richTextBox1.Text
-            };
-            client.Send(message);
-            MessageBox.Show("Đã gửi thành công!");
+                var client = new MailKit.Net.Smtp.SmtpClient();
+                client.Connect("smtp.gmail.com", 465, true); // smtp host, port, use ssl.
+                client.Authenticate(textBox2.Text, "bclh jrgg tmkp jjyq"); // gmail account, app password
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("anhanh", textBox2.Text));
+                message.To.Add(new MailboxAddress("", textBox3.Text));
+                message.Subject = textBox1.Text;
+                message.Body = new TextPart("plain") // gửi ở dạng plain text, hoặc có thể thay
+                {
+                    Text = richTextBox1.Text
+                };
+                client.Send(message);
+                MessageBox.Show("Đã gửi thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+            
         }
     }
 }

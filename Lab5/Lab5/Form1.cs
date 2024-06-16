@@ -23,11 +23,6 @@ namespace Lab5
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             Lab05_Bai04 lab05_Bai04 = new Lab05_Bai04();

@@ -108,12 +108,10 @@ namespace Lab5
                         MessageBox.Show("Tên món ăn và tên người đóng góp không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
                     // Start transaction
                     using (SQLiteTransaction transaction = sqliteConnection.BeginTransaction())
                     {
                         int idNCC = -1;
-
                         try
                         {
                             // Check if tenNguoiDongGop exists in NguoiDung table
@@ -156,7 +154,6 @@ namespace Lab5
                                     MessageBox.Show("Lỗi khi chèn dữ liệu món ăn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
-
                             // Commit transaction
                             transaction.Commit();
                         }

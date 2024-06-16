@@ -27,7 +27,7 @@ namespace Lab5
             client.Authenticate(textBox2.Text, textBox3.Text); // gmail accout, app password.
             var inbox = client.Inbox;
             inbox.Open(FolderAccess.ReadOnly);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < inbox.Count; i++)
             {
                 var message = inbox.GetMessage(i);
                 // xử lý để hiển thị email lên listview: message.Subject; message.From;
@@ -45,7 +45,7 @@ namespace Lab5
             var client = new Pop3Client();
             client.Connect("pop.gmail.com", 995, true); // imap host, port, use ssl.
             client.Authenticate(textBox2.Text, textBox3.Text); // gmail accout, app password.
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < client.Count; i++)
             {
                 var message = client.GetMessage(i);
                 // xử lý để hiển thị email lên listview: message.Subject; message.From;
