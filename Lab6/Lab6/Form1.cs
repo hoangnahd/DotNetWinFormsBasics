@@ -29,5 +29,11 @@ namespace Lab6
             Lab06_Bai02 lab06_Bai02 = new Lab06_Bai02();
             lab06_Bai02.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Lab06_Bai03 lab06_Bai03 = new Lab06_Bai03();
+            lab06_Bai03.ShowDialog();
+        }
     }
 }
