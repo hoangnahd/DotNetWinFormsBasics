@@ -98,14 +98,10 @@ namespace Lab5
             bai06_SendEmail.ShowDialog();
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.ListView listView = (System.Windows.Forms.ListView)sender;
-            ListViewItem selectedItem = listView.SelectedItems[0];
-            int selectedIndex = listView.SelectedIndices[0];
             var inbox = imapClient.Inbox;
-            inbox.Open(FolderAccess.ReadOnly);
-            selectedInbox = inbox.GetMessage(selectedIndex);
+            selectedInbox = inbox.GetMessage(int.Parse(listView1.SelectedItems[0].SubItems[0].Text.ToString())-1);
             Bai06_ReadMail bai06_ReadMail = new Bai06_ReadMail();
             bai06_ReadMail.ShowDialog();
         }

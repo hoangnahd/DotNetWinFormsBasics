@@ -102,6 +102,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(264, 22);
             this.textBox2.TabIndex = 5;
+            this.textBox2.Text = "bclh jrgg tmkp jjyq";
             this.textBox2.UseSystemPasswordChar = true;
             // 
             // textBox1
@@ -110,6 +111,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(264, 22);
             this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "shopeebot0001@gmail.com";
             // 
             // label2
             // 
@@ -222,7 +224,7 @@
             this.listView1.Size = new System.Drawing.Size(925, 426);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listView1.Click += new System.EventHandler(this.listView1_Click);
             // 
             // Lab05_Bai06
             // 
